@@ -62,3 +62,17 @@ mkdir secure
 fscrypt encrypt secure
 fscrypt unlock ~/secure/
 fscrypt lock ~/secure/
+
+
+curl https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-1.20.8352.tar.gz -o /tmp/jetbrains-toolbox-1.20.8352.tar.gz
+sudo tar -C /usr/local -xzf /tmp/jetbrains-toolbox-1.20.8352.tar.gz
+sudo ln -s /usr/local/jetbrains-toolbox-1.20.8352/jetbrains-toolbox /usr/local/bin/jetbrains-toolbox
+rm /tmp/go1.16.4.linux-amd64.tar.gz
+
+curl -L https://download.jetbrains.com/idea/ideaIC-2019.3.3.tar.gz -o /tmp/ideaIC-2019.3.3.tar.gz
+sudo tar -C /usr/local -xzf /tmp/ideaIC-2019.3.3.tar.gz
+sudo ln -s /usr/local/idea-IC-193.6494.35/bin/idea.sh /usr/local/bin/
+# install bazel plugin from inside intellij
+
+echo "fs.inotify.max_user_watches = 524288" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p --system
